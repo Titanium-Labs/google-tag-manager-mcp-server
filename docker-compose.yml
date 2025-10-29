@@ -1,0 +1,16 @@
+services:
+  gtm-mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: google-tag-manager-mcp-server
+    image: gtm-mcp-server:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    stdin_open: true
+    tty: true
+    # Uncomment to enable interactive mode
+    # command: ["node", "dist/stdio-server.js"]

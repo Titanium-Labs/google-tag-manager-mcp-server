@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "google-tag-manager": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--env-file",
+        "/mnt/c/GitHub/google-tag-manager-mcp-server/.env",
+        "gtm-mcp-server:latest"
+      ]
+    }
+  }
+}

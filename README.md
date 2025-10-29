@@ -4,7 +4,9 @@
 This is a server that supports remote MCP connections, with Google OAuth built-in and provides an interface to the Google Tag Manager API.
 
 
-## Access the remote MCP server from Claude Desktop
+## Access Options
+
+### Option 1: Remote MCP Server (Recommended for Production)
 
 Open Claude Desktop and navigate to Settings -> Developer -> Edit Config. This opens the configuration file that controls which MCP servers Claude can access.
 
@@ -24,6 +26,34 @@ Replace the content with the following configuration. Once you restart Claude De
   }
 }
 ```
+
+### Option 2: Docker (Local Development)
+
+Run the MCP server locally using Docker. This is great for development and testing.
+
+**Quick Start:**
+```bash
+# 1. Copy environment template
+cp .env.example .env
+
+# 2. Add your Google OAuth access token to .env
+# See DOCKER-DESKTOP-GUIDE.md for how to get a token
+
+# 3. Build and run
+npm run docker:build
+npm run docker:up
+
+# 4. View logs
+npm run docker:logs
+```
+
+For detailed Docker setup instructions, including how to:
+- Get a Google OAuth access token
+- Launch in Docker Desktop GUI
+- Use with Claude Desktop
+- Troubleshoot common issues
+
+**See [DOCKER-DESKTOP-GUIDE.md](DOCKER-DESKTOP-GUIDE.md)**
 
 ### Troubleshooting
 

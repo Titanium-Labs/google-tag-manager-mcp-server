@@ -4,6 +4,7 @@
   "description": "MCP server for Google Tag Manager",
   "license": "Apache-2.0",
   "author": "stape-io",
+  "type": "module",
   "homepage": "https://github.com/stape-io/google-tag-manager-mcp-server",
   "main": "dist/index.js",
   "bin": {
@@ -16,7 +17,7 @@
     "stape"
   ],
   "scripts": {
-    "build": "tsc && chmod 755 dist/index.js",
+    "build": "tsc && chmod 755 dist/index.js && chmod 755 dist/stdio-server.js",
     "postinstall": "npm run build",
     "lint": "eslint --ext .ts src",
     "lint:fix": "eslint --ext .ts src --fix",
@@ -24,7 +25,14 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
     "start": "wrangler dev",
-    "cf-typegen": "wrangler types --include-env=false"
+    "start:stdio": "node dist/stdio-server.js",
+    "cf-typegen": "wrangler types --include-env=false",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:restart": "docker-compose restart",
+    "docker:rebuild": "docker-compose down && docker-compose build && docker-compose up -d"
   },
   "dependencies": {
     "@cloudflare/workers-oauth-provider": "^0.0.10",
